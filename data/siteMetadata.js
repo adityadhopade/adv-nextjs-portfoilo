@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: 'Aditya Dhopade Portfolio',
   author: 'Aditya Dhopade',
-  headerTitle: 'Aditya"s Blog',
+  headerTitle: "Aditya's Blog",
   description: 'Keep up with the updates here',
   language: 'en-us',
   theme: 'system', // system, dark or light
@@ -20,7 +20,7 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/aditya-dhopade',
   threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com',
-  medium: 'https://medium.com//@adityadhopade18',
+  medium: 'https://medium.com/@adityadhopade18',
   bluesky: 'https://bsky.app/',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
