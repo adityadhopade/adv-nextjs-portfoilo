@@ -1,0 +1,208 @@
+---
+title: Popular AWS Service Limitations & Cost Optimization Techniques
+date: '2024-12-30'
+tags: ['aws', 'aws services',  'aws-service-limitations', 'cost-optimization']
+draft: false
+summary: Popular AWS Service Limitations & Cost Optimization Techniques
+---
+
+
+# AWS Services
+AWS has become the go-to cloud platform for developers and enterprises, offering a vast array of services for every conceivable use case. However, understanding service limitations and pricing is critical, whether you're a beginner testing a Proof of Concept (POC) or a seasoned professional scaling production workloads.
+
+Below is a comprehensive guide to popular AWS service limitations and cost optimization strategies to help you make informed decisions.
+
+Service Limitations for some popular services which I found out are as follows. 
+
+
+## Amazon EC2
+| **Resource**                                  | **Default Limit**        |
+|-----------------------------------------------|--------------------------|
+| Running On-Demand instances per region        | 20 per instance family   |
+| Elastic IP addresses per region               | 5                        |
+| Security groups per VPC                       | 250                      |
+| Rules per security group                      | 60 inbound, 60 outbound  |
+| Key pairs per region                          | Unlimited                |
+
+**NOTE:** - You can request quota increases for most of these limits.
+---
+
+## Amazon S3
+| **Resource**                                  | **Default Limit**        |
+|-----------------------------------------------|--------------------------|
+| Buckets per account                           | 100                      |
+| Objects per bucket                            | Virtually unlimited      |
+| Request rate per prefix                       | 3,500 PUT/POST/DELETE and 5,500 GET requests per second |
+| Max size of an object                         | 5 TB                     |
+
+**NOTE:** - These limits cannot generally be increased, but bucket and object request limits can scale automatically with usage.
+---
+## Amazon RDS
+| **Resource**                                  | **Default Limit**         |
+|-----------------------------------------------|---------------------------|
+| DB instances per region                       | 40                        |
+| Storage per DB instance                       | 64 TB (MySQL, PostgreSQL) |
+| Manual snapshots per region                   | 100 per account           |
+| Parameter groups per account                  | 50                        |
+
+**NOTE:** - Limits on DB instances can be increased upon request.
+---
+
+## Amazon Lambda
+| **Resource**                                  | **Default Limit**            |
+|-----------------------------------------------|------------------------------|
+| Concurrent executions                         | 1,000                       |
+| Function memory allocation                    | 128 MB to 10,240 MB         |
+| Function timeout                              | 900 seconds (15 minutes)    |
+| Deployment package size                       | 50 MB (compressed), 250 MB (uncompressed) |
+| Function invocation payload                   | 6 MB (synchronous), 256 KB (asynchronous) |
+
+**NOTE:** - Concurrent execution limits can be increased on request.
+---
+
+## Amazon VPC
+| **Resource**                                  | **Default Limit**        |
+|-----------------------------------------------|--------------------------|
+| VPCs per region                               | 5                        |
+| Subnets per VPC                               | 200                      |
+| Internet gateways per VPC                     | 5                        |
+| Security groups per VPC                       | 250                      |
+| Elastic IP addresses per region               | 5                        |
+
+**NOTE:** - Most of these limits can be increased upon request.
+---
+
+## Amazon DynamoDB
+| **Resource**                                  | **Default Limit**         |
+|-----------------------------------------------|---------------------------|
+| Tables per region                             | 2,500                     |
+| Read/Write capacity units per table           | Virtually unlimited       |
+| Item size                                     | 400 KB                    |
+| Partition key length                          | 1 KB                      |
+
+**NOTE:** - Throughput and capacity limits can scale dynamically with on-demand mode.
+---
+
+## Amazon CloudFormation
+| **Resource**                                  | **Default Limit**        |
+|-----------------------------------------------|--------------------------|
+| Stacks per region                             | 200                      |
+| Parameters per stack                          | 60                       |
+| Outputs per stack                             | 200                      |
+| Resources per stack                           | 500                      |
+
+**NOTE:** - Resource limits can be increased in some cases.
+---
+## Amazon EKS
+| **Resource**                                  | **Default Limit**        |
+|-----------------------------------------------|--------------------------|
+| Clusters per region                           | 100                      |
+| Nodes per cluster                             | Virtually unlimited      |
+| Pods per node                                 | Depends on instance type |
+
+**NOTE:** - Cluster limits can be increased if needed.
+---
+
+## Amazon SNS
+| **Resource**                                  | **Default Limit**       |
+|-----------------------------------------------|-------------------------|
+| Topics per account per region                 | 100,000                 |
+| Subscriptions per topic                       | 12,500                  |
+| Message size                                  | 256 KB                  |
+
+**NOTE** - Message size and throughput cannot be increased.
+
+## `Pricing Calculations`
+
+Determining the pricing for specific AWS infrastructure involves a few steps, as AWS pricing is based on `pay-as-you-go` and `on-demand models`. Here's how you can calculate the cost for AWS infrastructure:
+
+### Using the AWS Pricing Calculator
+
+- Its a relatively simple way for cost estimation of the Architecture that we are planning and can make the descisions according to taking consideration of price we are paying and avalability of the service.
+
+```bash
+https://calculator.aws/
+```
+
+AWS provides a detailed Pricing Calculator that allows you to estimate costs for specific services.
+
+**Steps:**
+- Go to the AWS Pricing Calculator.
+- Select the service you want to estimate (e.g., EC2, S3, RDS).
+- Enter details about your use case:
+- Region
+- Configuration (e.g., instance type, storage size, number of requests)
+- Usage duration (on-demand, reserved, or spot instances)
+- Review the cost breakdown.
+
+### `Monitor Costs with AWS Cost Management`
+Use AWS tools to track and control your expenses:
+
+- Billing Dashboard: View your current charges and usage.
+- AWS Budgets: Set budget thresholds and receive alerts.
+- Cost Explorer: Analyze historical data to predict future costs.
+---
+### Getting to know the type of `Budgets`
+
+**1. `Cost Budget`**
+
+***Purpose***: Tracks and manages your AWS costs.
+
+***Use Case***: Helps ensure your spending does not exceed your planned budget.
+
+***Options:***
+
+Set budgets for total costs or filter by services, linked accounts, or tags.
+
+Track actual costs and forecasted costs.
+
+***Example:***
+- A budget of $500/month for EC2 usage.
+- A budget for total AWS spending across all services.
+---
+**2. `Usage Budget`**
+
+***Purpose***: Monitors resource usage.
+
+***Use Case***: Useful when you need to track specific usage metrics, like hours of EC2 usage or GB of S3 storage.
+
+***Options***:
+Filter by specific service, linked accounts, or tags.
+
+***Example***:
+- A budget for 1000 hours of EC2 instance usage per month.
+- A budget for 10 TB of S3 Standard storage per month.
+---
+**3. `Savings Plans Budget`**
+
+***Purpose***: Tracks the usage and benefits of your AWS Savings Plans.
+
+***Use Case***: Ensures that you’re maximizing the benefits of your purchased Savings Plans.
+
+***Options***:
+Track how much of your Savings Plan commitment is being utilized.
+
+***Example***:
+- A budget to monitor $200/month of Savings Plan utilization.
+---
+**4.`Anomaly Detection Budget`**
+
+***Purpose***: Detects unusual spending patterns.
+
+***Use Case***: Alerts you when actual usage or costs deviate significantly from the norm.
+
+***Example:***
+- A budget to detect anomalies in EC2 or S3 costs exceeding 20% of the average usage.
+
+
+### Data Transfer and Networking
+
+- **Outbound Data Transfer**: Data leaving AWS is `charged.` 
+- **Inter-region Data Transfer**: Transferring data between AWS regions incurs additional costs. (minimize if possible)
+- **Cost Optimization Tip**: Minimize data transfer where possible, use caching via CloudFront, and leverage VPC endpoints for S3 and DynamoDB.
+
+
+### Conclusion
+
+Understanding AWS service limitations and optimizing costs are essential for efficient cloud operations. By leveraging AWS tools like the Pricing Calculator, Budgets, and Cost Explorer, you can proactively manage your infrastructure while staying within budget.
+
