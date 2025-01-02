@@ -119,6 +119,7 @@ Thanks to the community of users and contributors to the template! We are no lon
 - [drakerossman.com](https://drakerossman.com/) - Drake Rossman's blog about NixOS, Rust, Software Architecture and Engineering Management, as well as general musings.
 - [meamenu.com](https://www.meamenu.com) - Landing page and product blog starting from this template. It also uses [framer-motion](https://www.framer.com/motion) for animations, custom layout templates, [waline](https://waline.js.org/en/) for blog comments and [primereact](https://primereact.org/) forms [Ita]
 - [giovanni.orciuolo.it](https://giovanni.orciuolo.it) - Giovanni Orciuolo's personal website, blog and everything nerd.
+- [adityadhopade.in](https://adityadhopade.in) - Aditya Dhopade's personal website, blog, and project section added.
 
 ## Motivation
 
