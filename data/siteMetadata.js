@@ -2,8 +2,8 @@
 const siteMetadata = {
   title: 'Aditya Dhopade Portfolio',
   author: 'Aditya Dhopade',
-  headerTitle: "Aditya's Blog",
-  description: 'Keep up with the updates here',
+  headerTitle: "Bits, Bytes, and Blogs",
+  description: 'Keep up with the Posts here',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
