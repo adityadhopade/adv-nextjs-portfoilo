@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: 'Aditya Dhopade Portfolio',
   author: 'Aditya Dhopade',
-  headerTitle: "Bits, Bytes, and Blogs",
+  headerTitle: "Aditya Dhopade",
   description: 'Keep up with the Posts here',
   language: 'en-us',
   theme: 'system', // system, dark or light
